@@ -13,9 +13,14 @@ Haskell で Web アプリケーションを作成しながら学ぶ。
 - GHC 9.6.7
 - Cabal 3.14.2.0
 
+## 学習記録
+
+- [0001: 環境構築](lessons/0001-setup_environment.md)
+- [0002: Hello World Web サーバー](lessons/0002-hello_world_web_server.md)
+
 ## ビルド・実行
 
 ```bash
 cabal build
-cabal run study-fp
+cabal run study-fp   # ポート3000でWebサーバーが起動
 ```

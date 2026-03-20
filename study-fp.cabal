@@ -56,6 +56,7 @@ library
 
     -- Modules exported by the library.
     exposed-modules:  MyLib
+                      Web.App
 
     -- Modules included in this library but not exported.
     -- other-modules:
@@ -64,7 +65,9 @@ library
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    base ^>=4.18.3.0
+    build-depends:    base ^>=4.18.3.0,
+                      scotty >= 0.22,
+                      text
 
     -- Directories containing source files.
     hs-source-dirs:   src
@@ -78,6 +81,7 @@ executable study-fp
 
     -- .hs or .lhs file containing the Main module.
     main-is:          Main.hs
+    ghc-options:      -threaded
 
     -- Modules included in this executable, other than Main.
     -- other-modules:
@@ -88,6 +92,7 @@ executable study-fp
     -- Other library packages from which modules are imported.
     build-depends:
         base ^>=4.18.3.0,
+        scotty >= 0.22,
         study-fp
 
     -- Directories containing source files.

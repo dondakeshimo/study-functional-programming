@@ -14,7 +14,8 @@
       "Bash(gh api graphql *)",
       "Bash(gh repo view *)",
       "WebFetch(domain:github.com)",
-      "Bash(git log *)"
+      "Bash(git log *)",
+      "Bash(cabal:*)"
     ]
   },
   "enabledPlugins": {
