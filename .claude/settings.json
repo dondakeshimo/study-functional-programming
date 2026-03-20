@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(ps -o pid,ppid,cmd -p $$)",
+      "Bash(env)",
+      "Bash(grep *)",
+      "Bash(wc *)",
+      "Bash(gh issue *)",
+      "Bash(gh pr list)",
+      "Bash(gh pr view *)",
+      "Bash(gh pr diff *)",
+      "Bash(gh pr list *)",
+      "Bash(gh api graphql *)",
+      "Bash(gh repo view *)",
+      "WebFetch(domain:github.com)",
+      "Bash(git log *)"
+    ]
+  },
+  "enabledPlugins": {
+    "document-skills@anthropic-agent-skills": true,
+    "example-skills@anthropic-agent-skills": true,
+    "claude-api@anthropic-agent-skills": true
+  },
+  "language": "japanese"
+}
