@@ -23,5 +23,6 @@
     "example-skills@anthropic-agent-skills": true,
     "claude-api@anthropic-agent-skills": true
   },
-  "language": "japanese"
+  "language": "japanese",
+  "plansDirectory": "./.claude/plans"
 }

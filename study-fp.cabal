@@ -55,25 +55,49 @@ library
     import:           warnings
 
     -- Modules exported by the library.
-    exposed-modules:  MyLib
+    exposed-modules:  Domain.Task.Error
+                      Domain.Task.Types
+                      Domain.Task.Validation
+                      Domain.Task.Workflow
+                      Infrastructure.IdGen
+                      Infrastructure.Persistence
                       Web.App
-
-    -- Modules included in this library but not exported.
-    -- other-modules:
+                      Web.Dto
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
     build-depends:    base ^>=4.18.3.0,
+                      aeson,
+                      bytestring,
+                      cryptohash-sha256,
+                      base16-bytestring,
+                      directory,
+                      http-types,
                       scotty >= 0.22,
-                      text
+                      text,
+                      time
 
     -- Directories containing source files.
     hs-source-dirs:   src
 
     -- Base language which the package is written in.
     default-language: Haskell2010
+
+test-suite study-fp-test
+    import:           warnings
+    type:             exitcode-stdio-1.0
+    main-is:          Spec.hs
+    hs-source-dirs:   test
+    build-depends:    base ^>=4.18.3.0,
+                      hspec,
+                      text,
+                      time,
+                      study-fp
+    default-language: Haskell2010
+    other-modules:    Domain.Task.ValidationSpec
+                      Domain.Task.WorkflowSpec
 
 executable study-fp
     -- Import common warning flags.
@@ -92,6 +116,7 @@ executable study-fp
     -- Other library packages from which modules are imported.
     build-depends:
         base ^>=4.18.3.0,
+        directory,
         scotty >= 0.22,
         study-fp
 
