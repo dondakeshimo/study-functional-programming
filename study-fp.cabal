@@ -57,6 +57,7 @@ library
     -- Modules exported by the library.
     exposed-modules:  Domain.Task.Error
                       Domain.Task.Types
+                      Domain.Task.Types.Internal
                       Domain.Task.Validation
                       Domain.Task.Workflow
                       Infrastructure.IdGen

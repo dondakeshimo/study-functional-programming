@@ -35,7 +35,7 @@ import qualified Data.Text as T
   --   これにより Prelude の関数（null, length 等）との名前衝突を避けられる。
 
 import Domain.Task.Error (DomainError (..))
-import Domain.Task.Types (Content (..), Priority (..), Tag (..), Tags (..))
+import Domain.Task.Types.Internal (Content (..), Priority (..), Tag (..), Tags (..))
 
 -- | Content のスマートコンストラクタ。
 --

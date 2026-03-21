@@ -127,7 +127,7 @@ listTasksHandler = do
 getTaskHandler :: ActionM ()
 getTaskHandler = do
   tid <- pathParam "id" :: ActionM TL.Text
-  result <- liftIO $ findTask defaultDataFile (TaskId (TL.toStrict tid))
+  result <- liftIO $ findTask defaultDataFile (TL.toStrict tid)
   case result of
     Left err   -> domainErrorResponse err
     Right task -> json (taskToResponse task)
@@ -150,7 +150,7 @@ updateTaskHandler = do
       status status400
       text "Invalid transition command. Use: start, complete, revert"
     Just cmd -> do
-      result <- liftIO $ findTask defaultDataFile (TaskId (TL.toStrict tid))
+      result <- liftIO $ findTask defaultDataFile (TL.toStrict tid)
       case result of
         Left err -> domainErrorResponse err
         Right task -> do
@@ -168,7 +168,7 @@ updateTaskHandler = do
 deleteTaskHandler :: ActionM ()
 deleteTaskHandler = do
   tid <- pathParam "id" :: ActionM TL.Text
-  result <- liftIO $ findTask defaultDataFile (TaskId (TL.toStrict tid))
+  result <- liftIO $ findTask defaultDataFile (TL.toStrict tid)
   case result of
     Left err -> domainErrorResponse err
     Right task -> do
@@ -205,10 +205,10 @@ domainErrorResponse (TaskNotFound msg) = do
 -- 全状態でパターンマッチして tags フィールドにアクセスする。
 -- any: リストの要素のうち、一つでも条件を満たすものがあれば True を返す。
 hasTag :: T.Text -> Task -> Bool
-hasTag tg (TaskBacklog t)    = any (\(Tag x) -> x == tg) (unTags (backlogTags t))
-hasTag tg (TaskInProgress t) = any (\(Tag x) -> x == tg) (unTags (inProgressTags t))
-hasTag tg (TaskDone t)       = any (\(Tag x) -> x == tg) (unTags (doneTags t))
-hasTag tg (TaskClosed t)     = any (\(Tag x) -> x == tg) (unTags (closedTags t))
+hasTag tg (TaskBacklog t)    = any (\tag -> unTag tag == tg) (unTags (backlogTags t))
+hasTag tg (TaskInProgress t) = any (\tag -> unTag tag == tg) (unTags (inProgressTags t))
+hasTag tg (TaskDone t)       = any (\tag -> unTag tag == tg) (unTags (doneTags t))
+hasTag tg (TaskClosed t)     = any (\tag -> unTag tag == tg) (unTags (closedTags t))
 
 -- | タスクの Priority（Int 値）を取得するヘルパー。
 --

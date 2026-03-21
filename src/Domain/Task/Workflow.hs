@@ -60,7 +60,7 @@ import Data.Time (UTCTime)
 import Data.Text (Text)
 
 import Domain.Task.Error (DomainError (..))
-import Domain.Task.Types
+import Domain.Task.Types.Internal
 
 -- ============================================================================
 -- タスク作成

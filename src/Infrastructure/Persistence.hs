@@ -52,7 +52,7 @@ import qualified Data.Text as T
 import System.Directory (doesFileExist)
 
 import Domain.Task.Error (DomainError (..))
-import Domain.Task.Types
+import Domain.Task.Types.Internal
 
 -- ============================================================================
 -- ファイル操作関数
@@ -85,15 +85,18 @@ loadTasks path = do
 saveTasks :: FilePath -> [Task] -> IO ()
 saveTasks path tasks = BL.writeFile path (encode tasks)
 
--- | TaskId でタスクを検索する。
+-- | TaskId（テキスト表現）でタスクを検索する。
 --
+-- Text を受け取り、内部で TaskId に変換する。
+-- これにより呼び出し側が TaskId コンストラクタにアクセスする必要がなくなる。
 -- find: リストから条件に合う最初の要素を探す（Maybe を返す）。
 -- ここでは Maybe を Either DomainError に変換して返す。
-findTask :: FilePath -> TaskId -> IO (Either DomainError Task)
-findTask path tid = do
+findTask :: FilePath -> T.Text -> IO (Either DomainError Task)
+findTask path tidText = do
+  let tid = TaskId tidText
   tasks <- loadTasks path
   case find (\t -> taskId t == tid) tasks of
-    Nothing   -> return $ Left $ TaskNotFound (unTaskId tid)
+    Nothing   -> return $ Left $ TaskNotFound tidText
     Just task -> return $ Right task
 
 -- | タスクを追加する。

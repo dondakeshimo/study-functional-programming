@@ -6,7 +6,7 @@ import Test.Hspec
 import Data.Time.Clock (UTCTime (..))
 import Data.Time.Calendar (fromGregorian)
 
-import Domain.Task.Types
+import Domain.Task.Types.Internal
 import Domain.Task.Workflow
 
 -- テスト用の固定時刻

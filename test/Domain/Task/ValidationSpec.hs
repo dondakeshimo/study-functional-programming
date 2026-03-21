@@ -5,7 +5,7 @@ module Domain.Task.ValidationSpec (spec) where
 import Test.Hspec
 import qualified Data.Text as T
 
-import Domain.Task.Types (Content (..), Priority (..), Tag (..), Tags (..))
+import Domain.Task.Types.Internal (Content (..), Priority (..), Tag (..), Tags (..))
 import Domain.Task.Validation (mkContent, mkPriority, mkTag, mkTags)
 
 spec :: Spec

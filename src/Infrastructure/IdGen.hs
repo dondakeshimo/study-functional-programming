@@ -22,7 +22,7 @@ import Data.Text.Encoding (decodeUtf8, encodeUtf8)
 import Data.Time (UTCTime)
 import Data.Time.Format (formatTime, defaultTimeLocale)
 
-import Domain.Task.Types (TaskId (..))
+import Domain.Task.Types.Internal (TaskId (..))
 
 -- | Content と現在時刻から SHA256 ハッシュの先頭8文字を TaskId として生成する。
 --
